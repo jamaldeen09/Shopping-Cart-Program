@@ -127,3 +127,72 @@
     background-color: orange;
 }
 
+
+/* media queries */
+
+/* large screens */
+@media (max-width: 1024px){
+
+   
+
+    .notesItemInner{
+        width: 30vh !important;
+        min-height: 29vh !important;
+    }
+
+    .notesItemInner h1{
+        font-size: 1.8rem;
+    }
+
+
+    .availableColors .color{
+        width: 2vw;
+    }
+}
+
+/* tablet screens */
+@media (max-width: 768px){
+
+    .notesContainer{
+        grid-template-columns: 250px 400px;
+    }
+
+    .innerInputCon textarea{
+        height: 20vh;
+    }
+
+    .availableColors .color{
+        width: 2.5vw;
+    }
+}
+
+/* mobile screens */
+@media (max-width: 600px){
+    
+    .availableColors .color{
+        width: 2.6vw;
+        height: 1.8vh;
+    }
+
+    .notesItemInner{
+        width: 40vw !important;
+        min-height: 25vh !important;
+    } 
+
+    .notesContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .userInputContainer, .resultContainer {
+       width: 100%;
+    }
+
+    .resultContainer{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+}
+
+

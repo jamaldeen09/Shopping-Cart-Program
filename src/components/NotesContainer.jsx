@@ -2,9 +2,17 @@
 import NotesItemInner from "./NotesItemInner";
 import "./style.css";
 import React, { useState,useEffect } from 'react'
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHamburger } from "@fortawesome/free-solid-svg-icons/faHamburger";
 
 const NotesContainer = () => {
 
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
     // handle title 
     const [ userTitle,setUserTitle ] = useState("");
 
@@ -22,7 +30,6 @@ const NotesContainer = () => {
     // handle storage
 
     const [ notesArr,setNotesArr ] = useState([]);
-
     const [colorArr, setColorArr ] = useState([
         "blue",
         "red",
@@ -38,7 +45,9 @@ const NotesContainer = () => {
         const currTitle = userTitle;
         const currDescrip = userDescription;
 
-        const randomIndex = Math.floor(Math.random() * (colorArr.length - 1) + 1);
+        if (!currTitle.trim() && !currDescrip.trim()) return;
+
+        const randomIndex = Math.floor(Math.random() * colorArr.length);
         const randomColor = colorArr[randomIndex];
 
         const userInfoObj = {
@@ -47,13 +56,26 @@ const NotesContainer = () => {
             color: randomColor,
         }
 
-        setNotesArr((prevNotesArr) => [...prevNotesArr,userInfoObj]);
+        const updatedNotes = [...notesArr,userInfoObj];
+        setNotesArr(updatedNotes);
+        window.localStorage.setItem("userNotesInfo", JSON.stringify(updatedNotes));
     }
 
     // useState effect for storing
     useEffect(() => {
-        window.localStorage.setItem("userNotesInfo", JSON.stringify(notesArr));
-    }, [])
+        const savedArr = window.localStorage.getItem("userNotesInfo");
+        if (savedArr) {
+           setNotesArr(JSON.parse(savedArr));
+        }
+    },[])
+
+    // handle deleting
+    const handleDeleting = (indexToRemoved) => {
+        const newArr = notesArr.filter((_,index) => index !== indexToRemoved);
+
+        setNotesArr(newArr);
+        window.localStorage.setItem("userNotesInfo", JSON.stringify(newArr));
+    }
 
   return (
     <div className="notesContainer">
@@ -79,11 +101,11 @@ const NotesContainer = () => {
             </div>
         </div>
 
+
         {/* display div */}
         <div className="resultContainer">
             {notesArr.map((item, index) => {
-                 console.log(item.color);
-                return <NotesItemInner  randomCol = {item.color} key={index} title={item.submittedTitle} description={item.submittedDescription} />
+                return <NotesItemInner  deleteNote={ () => handleDeleting(index) } randomCol = {item.color} key={index} title={item.submittedTitle} description={item.submittedDescription} />
             })}
         </div>
     </div>
