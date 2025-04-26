@@ -1,10 +1,12 @@
 import React from 'react'
-import ToDoContainer from './components/ToDoContainer'
+import NotesContainer from './components/NotesContainer'
+
+
 
 const App = () => {
   return (
     <>
-      <ToDoContainer />
+     <NotesContainer />
     </>
   )
 }
