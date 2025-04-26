@@ -39,7 +39,7 @@
 
 .notesItemInner{
     height: 5vh;
-    width: 20vw;
+    min-width: 20vw;
     min-height: 35vh;
     border-radius: 15px;
     box-shadow: 0px 2px 5px;
@@ -146,7 +146,7 @@
 
 
     .availableColors .color{
-        width: 2vw;
+        width: 1.7vw;
     }
 }
 
@@ -168,7 +168,7 @@
 
 /* mobile screens */
 @media (max-width: 600px){
-    
+
     .availableColors .color{
         width: 2.6vw;
         height: 1.8vh;
