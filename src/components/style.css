@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* univesal styles */
+
+/* universal styles */
 *{
     margin: 0;
     padding: 0;
@@ -8,191 +8,122 @@
     font-family: "Poppins",sans-serif;
 }
 
-/* notes container styles */
-.notesContainer{
-    min-height: 100vh;
-    display:grid;
-    grid-template-columns: 350px 400px;
-    grid-template-areas: 
-    "input-container result-container result-container result-container"
-    "input-container result-container result-container result-container"
-    "input-container result-container result-container result-container";
+/* shopping container styles */
+.shoppingContainer{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background: linear-gradient(to right, white, rgb(178, 177, 177));
 }
 
-/* notes container items styles */
-.userInputContainer{
-    grid-area: input-container;
-    text-align:center;
-    padding: 20px 0px;
-    border: 0.9px solid grey;
-
-}
-
-/* result container */
-.resultContainer{
-    grid-area: result-container;
+/* inner container */
+.innerShoppingContainer{
+    min-height: 80vh;
+    min-width: 60vw;
+    background-color: white;
+    border-radius: 20px;
     display:flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    padding: 4rem 5rem;
-}
-
-.notesItemInner{
-    height: 5vh;
-    min-width: 20vw;
-    min-height: 35vh;
-    border-radius: 15px;
-    box-shadow: 0px 2px 5px;
-    display:flex;
+    align-items:center;
     flex-direction: column;
-    padding: 10px 10px;
+    gap: 4rem;
+    padding: 50px 30px;
+}
+
+/* inner container content */
+.innerContent{
+    display: flex;
+    gap:2rem;
+}
+
+.inputField{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inputField input{
+    border: 0.9px solid grey;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    width: 20vw;
+    font-weight: bold;
+    border-radius: 20px;
+    height: 5vh;
     transform: scale(1);
     transition: transform 0.6s ease-in-out;
 }
 
-.notesItemInner:hover{
+.inputField input:hover{
     transform: scale(1.03);
 }
 
-/* inner input container */
-
-.innerInputCon{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 20px 20px;
-
+.inputField label{
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
-.innerInputCon input[type = "text"]{
-    padding: 0px 15px;
-    height: 5vh;
-    border-radius: 20px;
-    border: 0.9px solid grey;
-    background-color: white;
-    filter: brightness(94%);
-}
-
-.innerInputCon textarea{
-    border: 0.9px solid grey;
-    padding: 10px 10px;
-    border-radius: 25px;
-}
-
-.innerInputCon button {
+/* add button */
+.addButton{
+    border:none;
+    background-color: gold;
     border-radius: 10px;
-    border: none;
     padding: 10px 20px;
-    background: linear-gradient(to right, black, orange);
-    color: white;
+    font-weight: bold;
     transform: scale(1);
     transition: transform 0.6s ease-in-out;
 }
 
-.innerInputCon button:hover{
+.addButton:hover{
     cursor: pointer;
-    transform:scale(1.04);
+    transform: scale(1.1);
     filter: brightness(90%);
 }
 
-/* colors container */
-.availableColors{
-    display: flex;
+/* users product container */
+.productContainer{
+    width: 100%;
+    height: 100%;
+    display:flex;
     flex-direction: column;
+    gap: 1rem;
+}
+
+/* product item  */
+.productItem{
+    border: 3px solid grey;
+    min-height: 7vh;
+    display:flex;
+    justify-content: space-between;
+    background: linear-gradient(to right, gold, black);
+    align-items:center;
+    gap: 1rem;
+    padding-right: 1.3rem;
+    border-radius: 20px;
+}
+
+.productItem .category{
+    flex-grow:1;
+    display:flex;
     justify-content:center;
     align-items:center;
-    gap: 1.6rem;
-    height: 44vh;
+    padding: 11px 0px;
+    color: white;
+    border-right: 2px solid white;
 }
 
-.availableColors .color{
-    border-radius: 100%;
-    width: 1vw;
-    height: 2vh;
+/* delete button */
+.deleteButton{
+    border: none;
+    background-color: white;
+    color: red;
+    padding: 6px 10px;
+    border-radius: 10px;
 }
 
-.availableColors .blue{
-    background-color: blue;
+.deleteButton:hover{
+    cursor: pointer;
+    filter: brightness(90%);
 }
-
-.availableColors .red{
-    background-color: red;
-}
-
-.availableColors .violet{
-    background-color: violet;
-}
-
-.availableColors .orange{
-    background-color: orange;
-}
-
-
-/* media queries */
-
-/* large screens */
-@media (max-width: 1024px){
-
-   
-
-    .notesItemInner{
-        width: 30vh !important;
-        min-height: 29vh !important;
-    }
-
-    .notesItemInner h1{
-        font-size: 1.8rem;
-    }
-
-
-    .availableColors .color{
-        width: 1.7vw;
-    }
-}
-
-/* tablet screens */
-@media (max-width: 768px){
-
-    .notesContainer{
-        grid-template-columns: 250px 400px;
-    }
-
-    .innerInputCon textarea{
-        height: 20vh;
-    }
-
-    .availableColors .color{
-        width: 2.5vw;
-    }
-}
-
-/* mobile screens */
-@media (max-width: 600px){
-
-    .availableColors .color{
-        width: 2.6vw;
-        height: 1.8vh;
-    }
-
-    .notesItemInner{
-        width: 40vw !important;
-        min-height: 25vh !important;
-    } 
-
-    .notesContainer {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .userInputContainer, .resultContainer {
-       width: 100%;
-    }
-
-    .resultContainer{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
-}
-
-

@@ -1,12 +1,12 @@
 import React from 'react'
-import NotesContainer from './components/NotesContainer'
+import ShoppingCartContainer from './components/ShoppingCartContainer'
 
 
 
 const App = () => {
   return (
     <>
-     <NotesContainer />
+      <ShoppingCartContainer />
     </>
   )
 }
